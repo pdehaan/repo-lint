@@ -3,6 +3,9 @@
   "description": "Linting GitHub Repos for Fun and Profit",
   "version": "1.0.0",
   "author": "Peter deHaan <peter@deseloper.com> (https://about.me/peterdehaan)",
+  "bugs": {
+    "url": "https://github.com/pdehaan/repo-lint/issues"
+  },
   "dependencies": {
     "@octokit/request": "^5.4.13",
     "axios": "^0.21.1",
@@ -13,9 +16,14 @@
   "directories": {
     "lib": "lib"
   },
+  "homepage": "https://github.com/pdehaan/repo-lint#readme",
   "keywords": [],
   "license": "MPL-2.0",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pdehaan/repo-lint.git"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   }
