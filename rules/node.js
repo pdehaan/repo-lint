@@ -27,6 +27,7 @@ module.exports = class NodeRules {
   }
 
   get packageJsonFiles() {
+    // NOTE: `lib.fetchFile()` is async, so let's wrap this getter in a Promise.
     return Promise.resolve()
       .then(async () => {
         const res = lib.findFileByName(this.files, "package.json");
@@ -37,14 +38,6 @@ module.exports = class NodeRules {
         }
         return res;
       });
-
-    // const res = lib.findFileByName(this.files, "package.json");
-    // for (const file of res) {
-    //   const pkg = lib.fetchPackageJson(file.raw_url, file.path);
-    //   file.payload = pkg.payload;
-    //   file.lint = pkg.lint;
-    // }
-    // return res;
   }
 
   get nodeModulesFiles() {
