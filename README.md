@@ -26,7 +26,6 @@ async function main(owner, repo) {
 This will return a super large JSON blob of data from the GitHub `/repos/{owner}/{repo}` and `/repos/{owner}/{repo}/git/trees/{default_branch}?recursive=1` APIs.
 We also add a bit of magic by scanning the array of files in the GitHub repo for missing README.md files, CODE_OF_CONDUCT.md files, package.json files, .eslint\* files, etc.
 
-
 ### CLI
 
 ```sh
