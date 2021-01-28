@@ -56,7 +56,8 @@ module.exports = class FileRules {
   get largeFiles() {
     return this.files
       .filter(file => file.type === "blob")
-      .sort((a, b) => b.size - a.size).slice(10);
+      .sort((a, b) => b.size - a.size)
+      .slice(0, 10);
   }
 
   get suspiciousPermissionsFiles() {
