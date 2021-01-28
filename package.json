@@ -14,7 +14,8 @@
   },
   "devDependencies": {},
   "directories": {
-    "lib": "lib"
+    "lib": "lib",
+    "rules": "rules"
   },
   "homepage": "https://github.com/pdehaan/repo-lint#readme",
   "keywords": [],
