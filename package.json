@@ -3,12 +3,14 @@
   "description": "Linting GitHub Repos for Fun and Profit",
   "version": "1.0.0",
   "author": "Peter deHaan <peter@deseloper.com> (https://about.me/peterdehaan)",
+  "bin": "cli.js",
   "bugs": {
     "url": "https://github.com/pdehaan/repo-lint/issues"
   },
   "dependencies": {
     "@octokit/request": "^5.4.13",
     "axios": "^0.21.1",
+    "meow": "^9.0.0",
     "npm-package-json-lint": "^5.1.0",
     "npm-package-json-lint-config-default": "^3.0.0"
   },

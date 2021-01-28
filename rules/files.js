@@ -55,17 +55,18 @@ module.exports = class FileRules {
 
   get largeFiles() {
     return this.files
-      .filter(file => file.type === "blob")
+      .filter((file) => file.type === "blob")
       .sort((a, b) => b.size - a.size)
       .slice(0, 10);
   }
 
   get suspiciousPermissionsFiles() {
-    return this.files
-      .filter(file => {
-        return file.type === "blob" &&
-          !file.mode.endsWith(644) &&
-          !file.name.endsWith(".sh");
-      });
+    return this.files.filter((file) => {
+      return (
+        file.type === "blob" &&
+        !file.mode.endsWith(644) &&
+        !file.name.endsWith(".sh")
+      );
+    });
   }
 };
