@@ -13,7 +13,7 @@ npm i pdehaan/repo-lint
 ### API
 
 ```js
-const github = require("repo-linter");
+const github = require("repo-lint");
 
 main("github_org_name", "github_repo_name");
 
