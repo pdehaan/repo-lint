@@ -33,7 +33,7 @@ module.exports = class NodeRules {
       for (const file of res) {
         const pkg = await lib.fetchFile(file.raw_url);
         file.pkg = pkg;
-        file.lint = lintPackageJson(pkg, file.path);
+        // file.lint = lintPackageJson(pkg, file.path);
       }
       return res;
     });
