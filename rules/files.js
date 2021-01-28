@@ -61,12 +61,22 @@ module.exports = class FileRules {
   }
 
   get suspiciousPermissionsFiles() {
-    return this.files.filter((file) => {
-      return (
-        file.type === "blob" &&
-        !file.mode.endsWith(644) &&
-        !file.name.endsWith(".sh")
-      );
-    });
-  }
+    return Promise.resolve()
+      .then(async () => {
+        const suspicious = [];
+        for (const file of this.files) {
+          // If we're a file, with execute permissions, but not a bash script...
+          if (file.type === "blob" && file.permissions.endsWith("x") && !file.name.endsWith(".sh")) {
+            const res = await lib.fetchFile(file.raw_url, {responseType: "text"});
+            const firstLine = res.trim().split("\n").shift();
+            const hasShebang = firstLine.startsWith("#!/usr/bin/env") || firstLine.startsWith("#!/bin/bash");
+            // If we're an executable file _without_ a shebang? Fishy.
+            if (!hasShebang) {
+              suspicious.push(file);
+            }
+          }
+        }
+        return suspicious;
+      });
+    }
 };
