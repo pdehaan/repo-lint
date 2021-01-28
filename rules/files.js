@@ -67,7 +67,11 @@ module.exports = class FileRules {
         for (const file of this.files) {
           // If we're a file, with execute permissions, but not a bash script...
           if (file.type === "blob" && file.permissions.endsWith("x") && !file.name.endsWith(".sh")) {
-            const res = await lib.fetchFile(file.raw_url, {responseType: "text"});
+            let res = await lib.fetchFile(file.raw_url, { responseType: "text", transformResponse: undefined });
+            if (!res.trim) {
+              // HACK: Got an object??? https://github.com/axios/axios/issues/907
+              res = JSON.stringify(res);
+            }
             const firstLine = res.trim().split("\n").shift();
             const hasShebang = firstLine.startsWith("#!/usr/bin/env") || firstLine.startsWith("#!/bin/bash");
             // If we're an executable file _without_ a shebang? Fishy.
