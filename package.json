@@ -19,7 +19,7 @@
   "homepage": "https://github.com/pdehaan/repo-lint#readme",
   "keywords": [],
   "license": "MPL-2.0",
-  "main": "index.js",
+  "main": "lib/github.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/pdehaan/repo-lint.git"
