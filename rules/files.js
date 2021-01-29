@@ -46,7 +46,7 @@ module.exports = class FileRules {
   }
 
   get licenseFiles() {
-    const res = lib.findFileByPath(this.files, "LICENSE");
+    const res = lib.findFileByPath(this.files, /^LICENSE(\.md)?$/i);
     if (!res.length) {
       lib.error(this.NAMESPACE, "No /LICENSE file found.");
     }
